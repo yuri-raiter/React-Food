@@ -43,6 +43,7 @@ export const GlobalStyle = createGlobalStyle`
 
    h1, h2 {
       font-weight: 600;
+      letter-spacing: 0.2rem;
    }
 
    h3 {
@@ -52,5 +53,13 @@ export const GlobalStyle = createGlobalStyle`
    [disabled] {
       opacity: 0.6;
       cursor: not-allowed;
+   }
+
+   .App {
+      width: 100vw;
+      height: 100vh;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: row;
    }
 `
