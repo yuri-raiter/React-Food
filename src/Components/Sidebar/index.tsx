@@ -1,4 +1,4 @@
-import { Container, Logo } from './styles'
+import { Container } from './styles'
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faHamburger, faPizzaSlice, faHotdog, faGlassMartiniAlt, faIceCream } from '@fortawesome/free-solid-svg-icons'
@@ -9,7 +9,7 @@ import logo from '../../assets/logo.svg'
 export function Sidebar() {
    return (
       <Container>
-         <Logo src={logo} alt="React Food" />
+         <img src={logo} alt="React Food" />
          <nav>
             <ul>
                <li>

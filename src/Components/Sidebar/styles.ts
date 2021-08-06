@@ -1,17 +1,23 @@
 import styled from 'styled-components'
 
 export const Container = styled.div`
-   width: 330px;
    height: 100vh;
    padding: 1.5rem 0;
    border-right: 2px solid var(--sidebar-border-gray);
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   flex: 1;
 
    nav {
       padding: 0 1rem;
       margin-top: 4rem;
+      width: 100%;
 
       ul {
          list-style: none;
+         display: flex;
+         flex-direction: column;
 
          li {
             background: var(--white);
@@ -48,9 +54,4 @@ export const Container = styled.div`
          }
       }
    }
-`
-
-export const Logo = styled.img`
-   display: block;
-   margin: 0 auto;
 `

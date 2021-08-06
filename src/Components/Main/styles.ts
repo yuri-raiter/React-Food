@@ -2,7 +2,7 @@ import styled from 'styled-components'
 
 export const Container = styled.div`
    padding: 3rem 5rem;
-   width: calc(100% - 330px);
+   flex: 4;
 `
 
 export const UpperSection = styled.div`
@@ -54,8 +54,6 @@ export const FoodSection = styled.div`
 
 
       li {
-         //width: 15rem;
-         //height: 18rem;
          display: flex;
          flex-direction: column;
          align-items: center;
@@ -63,6 +61,12 @@ export const FoodSection = styled.div`
          background: var(--white);
          border-radius: 0.5rem;
          padding: 1rem;
+         transition: filter .2s ease;
+         cursor: pointer;
+
+         &:hover {
+            filter: brightness(0.9);
+         }
 
          img {
             width: 10rem;
