@@ -4,9 +4,15 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faShoppingBasket } from '@fortawesome/free-solid-svg-icons'
 
 import hamburgerEmoji from '../../assets/emojis/hamburger.svg'
-import chickenBurger from '../../assets/chickenBurger.png'
+import chickenBurger from '../../assets/hamburgers/chickenBurger.png'
 
-export function Main() {
+
+interface MainProps {
+   onOpenProductModal: () => void
+}
+
+export function Main({ onOpenProductModal }: MainProps) {
+
    return (
       <Container>
          <UpperSection>
@@ -22,7 +28,7 @@ export function Main() {
          
          <FoodSection>
             <ul>
-               <li>
+               <li onClick={onOpenProductModal}>
                   <img src={chickenBurger} alt="chicken burger" />
                   <div>
                      <h2>Chicken Burger</h2>

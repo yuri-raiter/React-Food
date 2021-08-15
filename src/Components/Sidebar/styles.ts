@@ -22,10 +22,6 @@ export const Container = styled.div`
          li {
             background: var(--white);
             border-radius: 0.25rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 0.8rem 1.5rem;
             border: 3px solid transparent;
             cursor: pointer;
             transition: border .2s ease;
@@ -38,18 +34,26 @@ export const Container = styled.div`
                border: 3px solid var(--red);
             }
 
-            p {
-               font-size: 0.875rem;
-               font-weight: 400;
-               letter-spacing: 0.1rem;
-            }
+            a {
+               display: flex;
+               justify-content: space-between;
+               align-items: center;
+               text-decoration: none;
+               padding: 0.8rem 1.5rem;
 
-            p, .icon {
-               color: var(--black);
-            }
+               p {
+                  font-size: 0.875rem;
+                  font-weight: 400;
+                  letter-spacing: 0.1rem;
+               }
 
-            .icon {
-               font-size: 1.5rem;
+               p, .icon {
+                  color: var(--black);
+               }
+
+               .icon {
+                  font-size: 1.5rem;
+               }
             }
          }
       }
