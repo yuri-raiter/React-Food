@@ -63,6 +63,7 @@ export const FoodSection = styled.div`
          padding: 1rem;
          transition: filter .2s ease;
          cursor: pointer;
+         text-align: center;
 
          &:hover {
             filter: brightness(0.9);
@@ -91,6 +92,7 @@ export const FoodSection = styled.div`
             font-size: 2rem;
             font-weight: 600;
             color: var(--yellow);
+            letter-spacing: 0.2rem;
          }
       }
    }

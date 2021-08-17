@@ -1,14 +1,21 @@
 import { createContext, useEffect, useState, ReactNode } from 'react'
+import { useParams } from 'react-router-dom'
 import { api } from './services/api'
 
 
 interface Product {
    id: number
    name: string
+   description: string
    weight: number
    price: number
    category: string
    image: string
+}
+
+interface ProductsContextProps {
+   products: Product[]
+   id: string
 }
 
 interface ProductsProviderProps {
@@ -16,18 +23,21 @@ interface ProductsProviderProps {
 }
 
 
-export const ProductsContext = createContext<Product[]>([])
+export const ProductsContext = createContext<ProductsContextProps>(
+   {} as ProductsContextProps
+)
 
 export function ProductsProvider({ children }: ProductsProviderProps) {
-   const [product, setProduct] = useState<Product[]>([])
+   const [products, setProducts] = useState<Product[]>([])
+   const { id }: {id: string} = useParams()
 
    useEffect(() => {
-      api.get('pizzas')
-         .then(res => setProduct(res.data))
-   }, [])
+      api.get(id)
+         .then(res => setProducts(res.data))
+   }, [id])
 
    return (
-      <ProductsContext.Provider value={product}>
+      <ProductsContext.Provider value={{products, id}}>
          {children}
       </ProductsContext.Provider>
    )

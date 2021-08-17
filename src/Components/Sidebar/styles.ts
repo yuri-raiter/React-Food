@@ -14,33 +14,29 @@ export const Container = styled.div`
       margin-top: 4rem;
       width: 100%;
 
-      ul {
-         list-style: none;
+      div {
+         //list-style: none;
          display: flex;
          flex-direction: column;
 
-         li {
-            background: var(--white);
-            border-radius: 0.25rem;
-            border: 3px solid transparent;
-            cursor: pointer;
-            transition: border .2s ease;
-
-            & + li {
-               margin-top: 1rem;
-            }
-
-            &:hover {
-               border: 3px solid var(--red);
-            }
-
-            a {
+         a {
                display: flex;
                justify-content: space-between;
                align-items: center;
                text-decoration: none;
                padding: 0.8rem 1.5rem;
+               background: var(--white);
+               border: 3px solid transparent;
+               border-radius: 0.25rem;
 
+               & + a {
+                  margin-top: 1rem;
+               }
+
+               &:hover {
+                  border: 3px solid var(--red);
+               }
+               
                p {
                   font-size: 0.875rem;
                   font-weight: 400;
@@ -55,6 +51,47 @@ export const Container = styled.div`
                   font-size: 1.5rem;
                }
             }
+
+         /*li {
+            border: 3px solid transparent;
+            cursor: pointer;
+            transition: border .2s ease;
+
+            & + li {
+               margin-top: 1rem;
+            }
+
+            &:hover {
+               border: 3px solid var(--red);
+            }
+
+            &:active {
+               border: 3px solid var(--red);
+            }
+
+            .active {
+               .icon, p {
+                  color: var(--red);
+               }
+               
+               p {
+                  font-weight: 500;
+               }
+            }
+
+            
+         }*/
+      }
+
+      .active {
+         border: 3px solid var(--red);
+
+         .icon, p {
+            color: var(--red);
+         }
+                  
+         p {
+            font-weight: 500;
          }
       }
    }

@@ -70,7 +70,7 @@ export const hotDogs = [
       name: 'Simple Hot Dog',
       weight: 350,
       price: 3.50,
-      category: 'hot dogs',
+      category: 'hot-dogs',
       description: 'Hot dog with a sausage, ketchup, mustard, onions and green sauce',
       image: require('../assets/hotDogs/simpleHotDog.png').default
    }

@@ -20,7 +20,7 @@ createServer({
 
       this.get('hamburgers', () => hamburgers)
 
-      this.get('hotDogs', () => hotDogs)
+      this.get('hot-dogs', () => hotDogs)
       
       this.get('pizzas', () => pizzas)
 
@@ -45,13 +45,19 @@ export function App() {
 
    return (
       <div className="App">
-         <ProductsProvider>
+
             <Sidebar />
             <Switch>
                <Route exact path='/'>
-                  <Redirect to='/hamburgers'/>
+                  <Redirect to='/products/hamburgers'/>
                </Route>
-               <Route path='/hamburgers'>
+               <Route path='/products/:id'>
+                  <ProductsProvider>
+                     <Main onOpenProductModal={handleOpenProductModal} />
+                  </ProductsProvider>
+
+               </Route>
+               {/*<Route path='/hamburgers'>
                   <Main onOpenProductModal={handleOpenProductModal} />
                </Route>
                <Route path='/hotDogs'>
@@ -65,14 +71,13 @@ export function App() {
                </Route>
                <Route path='/desserts'>
                   <Main onOpenProductModal={handleOpenProductModal} />
-               </Route>
+   </Route>*/}
             </Switch>
             <ProductModal
                isOpen={isProductModalOpen}
                onRequestClose={handleCloseProductModal}
             />
             <GlobalStyle />
-         </ProductsProvider>
       </div>
    );
 }

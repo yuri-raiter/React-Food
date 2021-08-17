@@ -1,6 +1,4 @@
-import { useContext } from 'react'
-import { Link } from 'react-router-dom'
-import { ProductsContext } from '../../ProductsContext'
+import { NavLink } from 'react-router-dom'
 
 import { Container } from './styles'
 
@@ -11,47 +9,36 @@ import logo from '../../assets/logo.svg'
 
 
 export function Sidebar() {
-   const data = useContext(ProductsContext)
-
-   console.log(data)
-
    return (
       <Container>
          <img src={logo} alt="React Food" />
          <nav>
-            <ul>
-               <li>
-                  <Link to='/hamburgers'>
+            <div>
+                  <NavLink to='/products/hamburgers' activeClassName="active">
                      <FontAwesomeIcon icon={faHamburger} className="icon" />
                      <p>Hamburgers</p>
-                  </Link>
+                  </NavLink>
 
-               </li>
-               <li>
-                  <Link to='/hotDogs'>
+                  <NavLink to='/products/hot-dogs' activeClassName="active">
                      <FontAwesomeIcon icon={faHotdog} className="icon" />
                      <p>Hot Dogs</p>
-                  </Link>
-               </li>
-               <li>
-                  <Link to='/pizzas'>
+                  </NavLink>
+
+                  <NavLink to='/products/pizzas' activeClassName="active">
                      <FontAwesomeIcon icon={faPizzaSlice} className="icon" />
                      <p>Pizzas</p>
-                  </Link>
-               </li>
-               <li>
-                  <Link to='/drinks'>
+                  </NavLink>
+
+                  <NavLink to='/products/drinks' activeClassName="active">
                      <FontAwesomeIcon icon={faGlassMartiniAlt} className="icon" />
                      <p>Drinks</p>
-                  </Link>
-               </li>
-               <li>
-                  <Link to='/desserts'>
+                  </NavLink>
+                  
+                  <NavLink to='/products/desserts' activeClassName="active">
                      <FontAwesomeIcon icon={faIceCream} className="icon" />
                      <p>Desserts</p>
-                  </Link>
-               </li>
-            </ul>
+                  </NavLink>
+            </div>
          </nav>
       </Container>
    )
