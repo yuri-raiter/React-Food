@@ -57,21 +57,6 @@ export function App() {
                   </ProductsProvider>
 
                </Route>
-               {/*<Route path='/hamburgers'>
-                  <Main onOpenProductModal={handleOpenProductModal} />
-               </Route>
-               <Route path='/hotDogs'>
-                  <Main onOpenProductModal={handleOpenProductModal} />
-               </Route>
-               <Route path='/pizzas'>
-                  <Main onOpenProductModal={handleOpenProductModal} />
-               </Route>
-               <Route path='/drinks'>
-                  <Main onOpenProductModal={handleOpenProductModal} />
-               </Route>
-               <Route path='/desserts'>
-                  <Main onOpenProductModal={handleOpenProductModal} />
-   </Route>*/}
             </Switch>
             <ProductModal
                isOpen={isProductModalOpen}
