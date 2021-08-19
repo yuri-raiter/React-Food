@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom'
 import { api } from './services/api'
 
 
-interface Product {
+export interface Product {
    id: number
    name: string
    description: string
@@ -18,7 +18,12 @@ interface ProductsContextProps {
    id: string
 }
 
-interface ProductsProviderProps {
+interface ClickedProductContextProps {
+   clickedProduct: Product
+   setClickedProduct: React.Dispatch<React.SetStateAction<Product>>
+}
+
+interface ProviderProps {
    children: ReactNode
 }
 
@@ -27,7 +32,7 @@ export const ProductsContext = createContext<ProductsContextProps>(
    {} as ProductsContextProps
 )
 
-export function ProductsProvider({ children }: ProductsProviderProps) {
+export function ProductsProvider({ children }: ProviderProps) {
    const [products, setProducts] = useState<Product[]>([])
    const { id }: {id: string} = useParams()
 
@@ -40,5 +45,21 @@ export function ProductsProvider({ children }: ProductsProviderProps) {
       <ProductsContext.Provider value={{products, id}}>
          {children}
       </ProductsContext.Provider>
+   )
+}
+
+export const ClickedProductContext = createContext<ClickedProductContextProps>(
+   {} as ClickedProductContextProps
+)
+
+export function ClickedProductProvider({ children }: ProviderProps) {
+   const [clickedProduct, setClickedProduct] = useState<Product>(
+      {} as Product 
+   )
+
+   return (
+      <ClickedProductContext.Provider value={{clickedProduct, setClickedProduct}}>
+         {children}
+      </ClickedProductContext.Provider>
    )
 }

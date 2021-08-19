@@ -61,12 +61,12 @@ export const FoodSection = styled.div`
          background: var(--white);
          border-radius: 0.5rem;
          padding: 1rem;
-         transition: filter .2s ease;
+         transition: all .2s ease;
          cursor: pointer;
          text-align: center;
 
          &:hover {
-            filter: brightness(0.9);
+            background: var(--on-hover-white);
          }
 
          img {

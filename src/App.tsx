@@ -6,7 +6,7 @@ import { Main } from "./Components/Main";
 import { Sidebar } from "./Components/Sidebar";
 import { ProductModal } from './Components/ProductModal';
 
-import { ProductsProvider } from './ProductsContext';
+import { ClickedProductProvider, ProductsProvider } from './ProductsContext';
 import { desserts, drinks, hamburgers, hotDogs, pizzas } from './utils/productsData';
 import { createServer } from 'miragejs';
 
@@ -21,7 +21,7 @@ createServer({
       this.get('hamburgers', () => hamburgers)
 
       this.get('hot-dogs', () => hotDogs)
-      
+
       this.get('pizzas', () => pizzas)
 
       this.get('drinks', () => drinks)
@@ -45,24 +45,24 @@ export function App() {
 
    return (
       <div className="App">
-
-            <Sidebar />
+         <Sidebar />
+         <ClickedProductProvider>
             <Switch>
                <Route exact path='/'>
-                  <Redirect to='/products/hamburgers'/>
+                  <Redirect to='/products/hamburgers' />
                </Route>
                <Route path='/products/:id'>
                   <ProductsProvider>
                      <Main onOpenProductModal={handleOpenProductModal} />
                   </ProductsProvider>
-
                </Route>
             </Switch>
             <ProductModal
                isOpen={isProductModalOpen}
                onRequestClose={handleCloseProductModal}
             />
-            <GlobalStyle />
+         </ClickedProductProvider>
+         <GlobalStyle />
       </div>
    );
 }

@@ -1,6 +1,6 @@
 import { useContext } from "react"
 
-import { ProductsContext } from "../../ProductsContext"
+import { ClickedProductContext, Product, ProductsContext } from "../../ProductsContext"
 
 import { Container, FoodSection, UpperSection } from "./styles"
 
@@ -20,6 +20,7 @@ interface MainProps {
 
 export function Main({ onOpenProductModal }: MainProps) {
    const { products, id } = useContext(ProductsContext)
+   const { setClickedProduct } = useContext(ClickedProductContext)
 
    console.log(products)
 
@@ -54,6 +55,11 @@ export function Main({ onOpenProductModal }: MainProps) {
             </>
    }
 
+   function handleProductClick(p: Product) {
+      setClickedProduct(p)
+      return onOpenProductModal()
+   }
+
    return (
       <Container>
          <UpperSection>
@@ -69,7 +75,7 @@ export function Main({ onOpenProductModal }: MainProps) {
          <FoodSection>
             <ul>
                {products.map(p => (
-                  <li key={p.id} onClick={onOpenProductModal}>
+                  <li key={p.id} onClick={() => handleProductClick(p)}>
                      <img src={p.image} alt={p.name} />
                      <div>
                         <h2>{p.name}</h2>

@@ -10,6 +10,8 @@ export const GlobalStyle = createGlobalStyle`
       --gray: #767676;
       --lighter-gray: #c3c3c3;
       --sidebar-border-gray: #e3e3e3;
+      --on-hover-white: #e5e5e5;
+      --on-hover-yellow: #d8a512;
    }
    
    * {
@@ -61,5 +63,26 @@ export const GlobalStyle = createGlobalStyle`
       margin: 0 auto;
       display: flex;
       flex-direction: row;
+   }
+
+   .react-modal-overlay{
+      background: rgba(0, 0, 0, 0.5);
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+   }
+
+   .react-modal-content {
+      width: 100%;
+      max-width: 576px;
+      background: var(--white);
+      padding: 1rem 3rem;
+      position: relative;
+      border-radius: 0.25rem;
    }
 `
