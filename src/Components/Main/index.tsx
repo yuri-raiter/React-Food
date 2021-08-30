@@ -1,9 +1,5 @@
 import { useContext } from "react"
 
-import { ClickedProductContext, Product, ProductsContext } from "../../ProductsContext"
-
-import { Container, FoodSection, UpperSection } from "./styles"
-
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faShoppingBasket } from '@fortawesome/free-solid-svg-icons'
 
@@ -13,12 +9,15 @@ import pizzaEmoji from '../../assets/emojis/pizza.svg'
 import drinkEmoji from '../../assets/emojis/drink.svg'
 import dessertEmoji from '../../assets/emojis/dessert.svg'
 
+import { IMain, IProduct } from "../../types"
 
-interface MainProps {
-   onOpenProductModal: () => void
-}
+import { ProductsContext } from "../../contexts/ProductsContext"
+import { ClickedProductContext } from "../../contexts/ClickedProductContext"
 
-export function Main({ onOpenProductModal }: MainProps) {
+import { Container, FoodSection, UpperSection } from "./styles"
+
+
+export function Main({ onOpenProductModal, onOpenMyOrderModal }: IMain) {
    const { products, id } = useContext(ProductsContext)
    const { setClickedProduct } = useContext(ClickedProductContext)
 
@@ -55,7 +54,7 @@ export function Main({ onOpenProductModal }: MainProps) {
             </>
    }
 
-   function handleProductClick(p: Product) {
+   function handleProductClick(p: IProduct) {
       setClickedProduct(p)
       return onOpenProductModal()
    }
@@ -66,7 +65,7 @@ export function Main({ onOpenProductModal }: MainProps) {
             <div>
                {handleDisplaySectionTitle()}
             </div>
-            <div className="my-order">
+            <div className="my-order" onClick={onOpenMyOrderModal}>
                <p>My order</p>
                <FontAwesomeIcon icon={faShoppingBasket} className="icon" />
             </div>

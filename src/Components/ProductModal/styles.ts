@@ -43,21 +43,6 @@ export const Container = styled.div`
          font-size: 2.2rem;
          color: var(--yellow);
       }
-
-      .buttons-div {
-         display: flex;
-         align-items: center;
-
-         p {
-            font-size: 1.2rem;
-            margin: 0 0.7rem;
-         }
-
-         .icon {
-            font-size: 1.2rem;
-            color: var(--red);
-         }
-      }
    }
 
    p {

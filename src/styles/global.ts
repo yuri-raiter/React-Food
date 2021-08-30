@@ -78,11 +78,21 @@ export const GlobalStyle = createGlobalStyle`
    }
 
    .react-modal-content {
-      width: 100%;
-      max-width: 576px;
       background: var(--white);
       padding: 1rem 3rem;
       position: relative;
       border-radius: 0.25rem;
+      outline: 0;
+   }
+
+   .product-modal-content {
+      width: 100%;
+      max-width: 576px;
+   }
+
+   .my-order-modal-content {
+      width: 100%;
+      max-width: 70vw;
+      height: 65vh;
    }
 `

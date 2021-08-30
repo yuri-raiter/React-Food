@@ -2,16 +2,19 @@ import { useState } from 'react';
 import { Redirect, Route, Switch } from 'react-router-dom';
 import Modal from 'react-modal';
 
-import { Main } from "./Components/Main";
-import { Sidebar } from "./Components/Sidebar";
-import { ProductModal } from './Components/ProductModal';
+import { Main } from "./components/Main";
+import { Sidebar } from "./components/Sidebar";
+import { ProductModal } from './components/ProductModal';
+import { MyOrderModal } from './components/MyOrderModal';
 
-import { ClickedProductProvider, ProductsProvider } from './ProductsContext';
 import { desserts, drinks, hamburgers, hotDogs, pizzas } from './utils/productsData';
 import { createServer } from 'miragejs';
 
 import { GlobalStyle } from "./styles/global";
 
+import { ClickedProductProvider } from './contexts/ClickedProductContext';
+import { ProductsProvider } from './contexts/ProductsContext';
+import { MyOrderProvider } from './contexts/MyOrderContext';
 
 
 createServer({
@@ -34,13 +37,22 @@ Modal.setAppElement('#root')
 
 export function App() {
    const [isProductModalOpen, setIsProductModalOpen] = useState(false)
+   const [isMyOrderModalOpen, setIsMyOrderModalOpen] = useState(false)
 
    function handleOpenProductModal() {
       setIsProductModalOpen(true)
    }
 
+   function handleOpenMyOrderModal() {
+      setIsMyOrderModalOpen(true)
+   }
+
    function handleCloseProductModal() {
       setIsProductModalOpen(false)
+   }
+
+   function handleCloseMyOrderModal() {
+      setIsMyOrderModalOpen(false)
    }
 
    return (
@@ -53,14 +65,23 @@ export function App() {
                </Route>
                <Route path='/products/:id'>
                   <ProductsProvider>
-                     <Main onOpenProductModal={handleOpenProductModal} />
+                     <Main
+                        onOpenProductModal={handleOpenProductModal}
+                        onOpenMyOrderModal={handleOpenMyOrderModal}
+                     />
                   </ProductsProvider>
                </Route>
             </Switch>
-            <ProductModal
-               isOpen={isProductModalOpen}
-               onRequestClose={handleCloseProductModal}
-            />
+            <MyOrderProvider>
+               <ProductModal
+                  isOpen={isProductModalOpen}
+                  onRequestClose={handleCloseProductModal}
+               />
+               <MyOrderModal
+                  isOpen={isMyOrderModalOpen}
+                  onRequestClose={handleCloseMyOrderModal}
+               />
+            </MyOrderProvider>
          </ClickedProductProvider>
          <GlobalStyle />
       </div>

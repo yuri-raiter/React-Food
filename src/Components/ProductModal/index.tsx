@@ -1,27 +1,49 @@
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 import Modal from 'react-modal';
 
-import { ClickedProductContext } from '../../ProductsContext';
-
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faPlusCircle, faMinusCircle, faTimes } from '@fortawesome/free-solid-svg-icons'
+import { faTimes } from '@fortawesome/free-solid-svg-icons'
+
+import { IProductModal } from '../../types';
+import { ClickedProductContext } from '../../contexts/ClickedProductContext';
+import { MyOrderContext } from '../../contexts/MyOrderContext';
 
 import { Container } from './styles';
+import { QuantityButtons } from '../QuantityButtons';
 
-interface ProductModalProps {
-   isOpen: boolean
-   onRequestClose: () => void
-}
 
-export function ProductModal({ isOpen, onRequestClose }: ProductModalProps) {
+export function ProductModal({ isOpen, onRequestClose }: IProductModal) {
    const { clickedProduct } = useContext(ClickedProductContext)
+   const { setOrder } = useContext(MyOrderContext)
+   const [quantity, setQuantity] = useState<number>(0)
+
+
+   function handleAddToOrder() {
+      if (quantity === 0) {
+         alert(`You must choose how many ${clickedProduct.name} you want!`)
+         return
+      }
+
+      setOrder(order => [...order, {...clickedProduct, quantity}])
+      onRequestClose()
+      setQuantity(0)
+      return
+   }
+
+   function dropQuantity(quantity: number) {
+      return quantity > 0 && setQuantity(q => q - 1)
+   }
+
+   function increaseQuantity() {
+      return setQuantity(q => q + 1)
+   }
 
    return (
       <Modal
          isOpen={isOpen}
          onRequestClose={onRequestClose}
          overlayClassName="react-modal-overlay"
-         className="react-modal-content"
+         className="react-modal-content product-modal-content"
       >
          {isOpen ? (
             <Container>
@@ -36,14 +58,10 @@ export function ProductModal({ isOpen, onRequestClose }: ProductModalProps) {
                </div>
                <div className="second-div">
                   <h2>${clickedProduct.price.toFixed(2)}</h2>
-                  <div className="buttons-div">
-                     <FontAwesomeIcon icon={faMinusCircle} className="icon" />
-                     <p>1</p>
-                     <FontAwesomeIcon icon={faPlusCircle} className="icon" />
-                  </div>
+                  <QuantityButtons quantity={quantity} dropQuantity={dropQuantity} increaseQuantity={increaseQuantity} />
                </div>
                <p>{clickedProduct.description}</p>
-               <button>Add to Order</button>
+               <button onClick={handleAddToOrder}>Add to Order</button>
             </Container>
          ) : null}
       </Modal>

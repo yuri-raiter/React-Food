@@ -1,11 +1,11 @@
 import { NavLink } from 'react-router-dom'
 
-import { Container } from './styles'
-
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faHamburger, faPizzaSlice, faHotdog, faGlassMartiniAlt, faIceCream } from '@fortawesome/free-solid-svg-icons'
 
 import logo from '../../assets/logo.svg'
+
+import { Container } from './styles'
 
 
 export function Sidebar() {
