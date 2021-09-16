@@ -12,6 +12,10 @@ export const GlobalStyle = createGlobalStyle`
       --sidebar-border-gray: #e3e3e3;
       --on-hover-white: #e5e5e5;
       --on-hover-yellow: #d8a512;
+
+      --toastify-color-success: #11998e;
+      --toastify-color-error: #bd1e51;
+      --toastify-color-warning: #f1b814;
    }
    
    * {

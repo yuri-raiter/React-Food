@@ -11,6 +11,8 @@ import { BottomContainer, Container, Content } from './styles';
 import { QuantityButtons } from '../QuantityButtons';
 import { ModalMainButton } from '../ModalMainButton';
 
+import { showToast } from '../../utils/toast';
+
 
 export function MyOrderModal({ isOpen, onRequestClose }: IMyOrderModal) {
    const { order, setOrder } = useContext(MyOrderContext)
@@ -37,6 +39,17 @@ export function MyOrderModal({ isOpen, onRequestClose }: IMyOrderModal) {
       return (o.price * o.quantity)
    }
 
+   function handleTrashButton(id: number) {
+      return setOrder(ar => ar.filter(
+         o => o.id !== id
+      ))
+   }
+
+   function handleCheckout() {
+      setOrder([])
+      return showToast({type: 'success', message: 'Your order is confirmed!'})
+   }
+
    return (
       <Modal
          isOpen={isOpen}
@@ -61,12 +74,12 @@ export function MyOrderModal({ isOpen, onRequestClose }: IMyOrderModal) {
                      </div>
                      <QuantityButtons id={o.id} quantity={o.quantity} dropQuantity={dropQuantity} increaseQuantity={increaseQuantity} />
                      <h2>${handleTotal(o).toFixed(2)}</h2>
-                     <FontAwesomeIcon icon={faTrash} className="trash" />
+                     <FontAwesomeIcon icon={faTrash} className="trash" onClick={() => handleTrashButton(o.id)}/>
                   </div>
                ))}
             </Content>
             <BottomContainer>
-               <ModalMainButton text="Checkout" />
+               <ModalMainButton text="Checkout" handleCheckout={handleCheckout} />
                <div>
                   <h3>Total</h3>
                   <h2>$

@@ -15,6 +15,7 @@ import { GlobalStyle } from "./styles/global";
 import { ClickedProductProvider } from './contexts/ClickedProductContext';
 import { ProductsProvider } from './contexts/ProductsContext';
 import { MyOrderProvider } from './contexts/MyOrderContext';
+import { ToastComponent } from './utils/toast';
 
 
 createServer({
@@ -83,6 +84,7 @@ export function App() {
                />
             </MyOrderProvider>
          </ClickedProductProvider>
+         <ToastComponent />
          <GlobalStyle />
       </div>
    );

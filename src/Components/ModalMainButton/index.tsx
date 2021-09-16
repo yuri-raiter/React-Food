@@ -1,8 +1,8 @@
 import { IMainModalButton } from "../../types";
 import { Button } from "./styles";
 
-export function ModalMainButton({ text }: IMainModalButton) {
+export function ModalMainButton({ text, handleCheckout }: IMainModalButton) {
    return (
-      <Button>{text}</Button>
+      <Button onClick={handleCheckout}>{text}</Button>
    )
 }

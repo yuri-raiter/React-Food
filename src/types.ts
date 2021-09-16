@@ -57,4 +57,10 @@ export interface IQuantityButtons {
 
 export interface IMainModalButton {
    text: string
+   handleCheckout: () => void
+}
+
+export interface IShowToast {
+   type: string
+   message: string
 }
