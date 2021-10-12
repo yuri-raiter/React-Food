@@ -10,5 +10,6 @@ This is a small React JS project of a food e-commerce which uses a fake API to g
 ### What I used:
 * React JS
 * Typescript
+* React-Modal
 * Styled-Components
 * MirageJS
