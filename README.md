@@ -11,5 +11,7 @@ This is a small React JS project of a food e-commerce which uses a fake API to g
 * React JS
 * Typescript
 * React-Modal
+* React-Toastify
 * Styled-Components
+* Axios
 * MirageJS
